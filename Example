@@ -1,0 +1,27 @@
+hrishikesh@mylinux:~/Desktop/myos/file-system/driver/hgfs$ ls
+disk_image  hgfs.c  hgfs.h  hgfs_mkfs.c  Makefile  mnt  README
+hrishikesh@mylinux:~/Desktop/myos/file-system/driver/hgfs$ make
+Building modules, stage 2.
+MODPOST 1 modules
+CC      /home/hrishikesh/Desktop/myos/file-system/driver/hgfs/hgfs.mod.o
+LD [M]  /home/hrishikesh/Desktop/myos/file-system/driver/hgfs/hgfs.ko
+make[1]: Leaving directory `/usr/src/linux-headers-3.13.0-48-generic'
+cc     hgfs_mkfs.c   -o hgfs_mkfs
+hrishikesh@mylinux:~/Desktop/myos/file-system/driver/hgfs$ ls
+disk_image  hgfs.c  hgfs.h  hgfs.ko  hgfs_mkfs  hgfs_mkfs.c  hgfs.mod.c  hgfs.mod.o  hgfs.o  Makefile  mnt  modules.order  Module.symvers  README
+hrishikesh@mylinux:~/Desktop/myos/file-system/driver/hgfs$ ./hgfs_mkfs 
+open(): Success
+hiii
+hello
+world
+helloween
+magic=100
+hrishikesh@mylinux:~/Desktop/myos/file-system/driver/hgfs$ su
+Password: 
+root@mylinux:/home/hrishikesh/Desktop/myos/file-system/driver/hgfs# insmod hgfs.ko 
+root@mylinux:/home/hrishikesh/Desktop/myos/file-system/driver/hgfs# mount -t hgfs -o loop disk_image mnt/
+root@mylinux:/home/hrishikesh/Desktop/myos/file-system/driver/hgfs# cd mnt/
+root@mylinux:/home/hrishikesh/Desktop/myos/file-system/driver/hgfs/mnt# ls
+welcome
+root@mylinux:/home/hrishikesh/Desktop/myos/file-system/driver/hgfs/mnt# cat welcome 
+Coding is not only duty it's beauty too

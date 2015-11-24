@@ -1,0 +1,85 @@
+======= OPERATING SYSTEM: IMPLEMENTATION OF UNIX SYSTEM V FILESYSTEM  =======
+
+>>>>> LICENSE
+
+All of the files in this package are released into the public domain without
+warranty, and may be freely used, modified, and reinfomed.
+
+
+
+>>>>> Author Details
+
+Hrishikesh Goyal
+
+BTech 4/4 Computer Science And Engineering
+National Institute Of Technology Warangal
+
+
+>>>>> About
+
+This project implements hgfs a new filesystem based on unix system v filesystem. The design of the
+filesystem is in progress donot use this yet. 
+
+Filesystem does supports :	- mount on linux-kernel-3.13.0.48
+							- Reading content of a file
+							- listing content of directory
+							- limited (512 bytes) write support into the file if offset is specified
+
+>>>>> Architecture hgfs 1.0
+
+Block size:		 512 bytes
+Block count :	 8192
+Block zero: 	 Boot block 
+Block 1+2: 	 	 Super block
+Block 3 to 10:	 Inode blocks
+Block 11 to 14:  Root directory blocks
+Block 15 to 8191:Data blocks 
+                   
+>>>>> Patch Submission
+
+Please send a merge request only if you are ready to publish your changes according to unix system v filesystem standards.
+
+I would like to keep the filesystem simple and minimal so that it can be used as a good learning material.
+
+
+TODO
+-----
+- After the 1.0 release, 
+		-start with support for writing large data into the file
+		-implement indirect, double indirect, triple indirect data block pointers in inode
+	
+
+>>>>> PACKAGE CONTENTS
+
+hgfs_mkfs.c		Code to initialize filesystem image
+hgfs.c			filesystem driver
+hgfs.h			necessary declarations,macro definations
+README			This file
+Makefile		to build the module
+disk image		initialized filesystem image with welcome file
+Example			Contains examples
+
+>>>>> compilation and installation
+
+For building This filesystem you should have Linux (any distribution) with kernel version-3.13.0.* (
+try yourself to test on other kernel-versions). And GCC C compiler
+
+1. git clone hgfs ripository
+
+2. Edit Makefile for your configuration (if necessary)  the default parameters should
+   be suitable.
+
+3. Execute make to build
+
+4. Run hgfs_mkfs to initialize the filesytem image.
+
+5. insert module 
+
+6. mount the hgfs filesystem
+
+
+>>>>> Contact
+                	
+Email  hrishi.goyal@gmail.com
+
+Enjoy!
